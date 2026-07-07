@@ -1,0 +1,3 @@
+setup:
+  - project: answer-placement
+    config: dev
