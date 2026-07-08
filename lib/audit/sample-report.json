@@ -1,0 +1,137 @@
+{
+  "url": "https://willmybagfuckingfit.com",
+  "scannedAt": "2026-07-02T14:02:52.208Z",
+  "pagesCrawled": [
+    "https://willmybagfuckingfit.com",
+    "https://willmybagfuckingfit.com/blog",
+    "https://willmybagfuckingfit.com/blog/best-packing-cubes",
+    "https://willmybagfuckingfit.com/blog/best-luggage-scales",
+    "https://willmybagfuckingfit.com/blog/best-luggage-trackers"
+  ],
+  "seo": {
+    "score": 51,
+    "findings": [
+      {
+        "severity": "high",
+        "issue": "Blog and gear guides are empty placeholders ('full guide coming soon', 'No posts yet') and airline guides are 'on the way'.",
+        "why": "Thin/duplicate content across the blog pages (every guide repeats the same 'Best bags' block) gives Google almost nothing unique to rank, and thin pages can drag down overall site quality.",
+        "fix": "Publish real, unique content for each guide (packing cubes, scales, trackers) and build out individual airline carry-on pages targeting high-intent queries like 'Ryanair carry-on size'."
+      },
+      {
+        "severity": "medium",
+        "issue": "No structured data / schema anywhere on the site (schemaTypes empty).",
+        "why": "Missing WebApplication, FAQPage, ItemList and Product/Review markup means Google can't understand the tool or product lists, reducing rich-result eligibility.",
+        "fix": "Add JSON-LD: WebApplication for the tool, FAQPage for common baggage questions, and ItemList/Product for the recommended bags."
+      },
+      {
+        "severity": "medium",
+        "issue": "Individual airline data lives only in on-page anchors (#airlines) rather than dedicated indexable URLs.",
+        "why": "High-volume searches like 'United carry-on dimensions' can't rank because there's no dedicated page/URL to match that intent.",
+        "fix": "Create a crawlable page per airline with its limits, official policy link, and 'which bags fit' — each a separate indexable URL in the sitemap."
+      },
+      {
+        "severity": "low",
+        "issue": "Profanity in the domain/brand and titles.",
+        "why": "While memorable, explicit language can trigger SafeSearch filtering and limit visibility in family-safe or brand-sensitive contexts.",
+        "fix": "Keep the brand but ensure titles/metas also include clean, descriptive keyword phrases (e.g. 'carry-on size checker') so pages surface even under safe-search."
+      },
+      {
+        "severity": "low",
+        "issue": "Home page relies heavily on a JS tool with limited crawlable text depth.",
+        "why": "Search engines reward substantive text; a mostly-interactive page with slogans offers little indexable content around target keywords.",
+        "fix": "Add an SEO-friendly intro and FAQ section explaining carry-on vs personal item sizes and how the checker works in plain text."
+      }
+    ]
+  },
+  "aeo": {
+    "score": 42,
+    "findings": [
+      {
+        "severity": "high",
+        "issue": "No FAQ or Q&A content answering common baggage questions in text.",
+        "why": "Answer engines and AI Overviews pull concise, question-shaped answers; without them the site won't be cited for queries like 'what size bag counts as a personal item?'",
+        "fix": "Add an FAQ section with direct question headings and 40–60 word answers (personal item vs carry-on, do wheels count, standard sizes) marked up with FAQPage schema."
+      },
+      {
+        "severity": "high",
+        "issue": "No structured data and no llms.txt.",
+        "why": "AI crawlers rely on schema and machine-readable summaries to extract and trust facts; their absence makes the airline data hard to cite reliably.",
+        "fix": "Add JSON-LD for the airline dataset (ItemList of carry-on dimensions) and publish an llms.txt summarizing what the site offers and its key data."
+      },
+      {
+        "severity": "medium",
+        "issue": "The airline size table exists but isn't framed as extractable, sourced facts with dates.",
+        "why": "Answer engines prefer clearly attributed, up-to-date data; undated dimensions with only external links reduce citation confidence.",
+        "fix": "Present each airline's limits as a clearly labeled data point with 'last verified' date and a direct citation to the official policy."
+      },
+      {
+        "severity": "low",
+        "issue": "Placeholder blog pages provide no answerable substance.",
+        "why": "Empty guides can't be surfaced as answers and signal low content quality to answer engines.",
+        "fix": "Replace 'coming soon' with genuine, well-structured content that directly answers the guide's implied question."
+      }
+    ]
+  },
+  "geo": {
+    "score": 47,
+    "findings": [
+      {
+        "severity": "medium",
+        "issue": "Strong 'best for' framing exists but lacks proof, testing methodology, or third-party validation.",
+        "why": "AI assistants recommend brands backed by demonstrable expertise and reviews; unsupported picks ('ones we'd actually pack') are less likely to be cited as authoritative.",
+        "fix": "Document your testing methodology, add reviewer credentials, user reviews/ratings, and link to independent sources supporting the bag recommendations."
+      },
+      {
+        "severity": "medium",
+        "issue": "Weak brand/entity signals — no visible About content, no external mentions or credibility markers.",
+        "why": "LLMs recommend entities they can verify; a thin brand footprint makes it unlikely the tool is surfaced when users ask 'how do I check if my bag fits?'",
+        "fix": "Build out an About page with team/mission, seek mentions on travel blogs/Reddit, and establish consistent entity info (social, Wikipedia-style presence)."
+      },
+      {
+        "severity": "medium",
+        "issue": "No comparison or 'vs' content beyond the single bag list.",
+        "why": "Assistants pull from comparison-style pages when recommending products; a single static list limits recommendation surface area.",
+        "fix": "Add comparison pages (e.g. 'best carry-on for Ryanair' or 'Béis vs Travelpro') with clear criteria and use-case framing."
+      },
+      {
+        "severity": "low",
+        "issue": "Affiliate disclosure is present but recommendations lack differentiation depth.",
+        "why": "Transparency is good, but shallow reasoning per product reduces trust signals AI models weigh.",
+        "fix": "Expand each pick with pros/cons, who it's best for, and measured fit data to strengthen recommendation credibility."
+      }
+    ]
+  },
+  "topIssues": [
+    {
+      "severity": "high",
+      "issue": "All blog/gear guides are empty 'coming soon' placeholders with duplicated content blocks.",
+      "why": "Thin, repetitive pages give search and answer engines nothing unique to rank or cite and can drag down whole-site quality.",
+      "fix": "Prioritize publishing real, unique content for each guide and each airline before promoting the site."
+    },
+    {
+      "severity": "high",
+      "issue": "No structured data anywhere on the site.",
+      "why": "Missing schema blocks rich results in Google and makes the airline/product data hard for AI engines to extract and trust.",
+      "fix": "Add JSON-LD: WebApplication, FAQPage, and ItemList/Product markup across the relevant pages."
+    },
+    {
+      "severity": "high",
+      "issue": "No FAQ / question-shaped answer content.",
+      "why": "AI Overviews and answer engines cite concise Q&A; without it the site misses high-intent baggage questions entirely.",
+      "fix": "Create an FAQ covering carry-on vs personal item, wheel/handle measurement, and airline size norms, marked up with FAQPage schema."
+    },
+    {
+      "severity": "medium",
+      "issue": "Airline data isn't split into dedicated, indexable pages.",
+      "why": "Searches like 'Delta carry-on size' can't rank against on-page anchors, leaving major traffic on the table.",
+      "fix": "Build one indexable page per airline with limits, verified dates, official links, and matching bag recommendations."
+    },
+    {
+      "severity": "medium",
+      "issue": "Weak trust/credibility and brand-entity signals.",
+      "why": "AI assistants recommend verifiable, proven brands; no methodology, reviews, or About depth limits recommendation likelihood.",
+      "fix": "Publish testing methodology, an About page, gather reviews, and pursue third-party mentions."
+    }
+  ],
+  "summary": "You've got a genuinely useful tool and a fun, clear brand, but the site is mostly a shell right now — the blog and airline guides are empty placeholders, there's no schema, and no FAQ content, so search engines and AI assistants have little unique material to rank or cite. The fastest wins are filling in real content (per-airline pages and actual guides), adding structured data plus an FAQ, and building trust signals like a testing methodology and reviews so AI tools feel confident recommending you."
+}

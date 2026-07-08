@@ -1,0 +1,82 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+/* Theme tokens are injected at runtime via inline styles on <html>.
+   See app/layout.tsx — uses themeToCssVars() from themes/index.ts.
+   This file exposes them to Tailwind + holds AnswerPlacement brand extras. */
+
+@theme inline {
+  --color-brand: var(--color-brand);
+  --color-brand-hover: var(--color-brand-hover);
+  --color-background: var(--color-background);
+  --color-foreground: var(--color-foreground);
+  --color-muted: var(--color-muted);
+  --color-muted-foreground: var(--color-muted-foreground);
+  --color-border: var(--color-border);
+  --color-accent: var(--color-accent);
+  /* Three-channel brand colors */
+  --color-seo: var(--color-seo);
+  --color-aeo: var(--color-aeo);
+  --color-geo: var(--color-geo);
+  --radius-sm: var(--radius-sm);
+  --radius-md: var(--radius-md);
+  --radius-lg: var(--radius-lg);
+  --radius-full: var(--radius-full);
+}
+
+/* Channel colors — SEO orange, AEO blue, GEO purple — and the accent gradient. */
+:root {
+  --color-seo: #f97316;
+  --color-aeo: #3b82f6;
+  --color-geo: #a855f7;
+  --accent-gradient: linear-gradient(100deg, #f97316 0%, #ec4899 45%, #a855f7 100%);
+}
+
+body {
+  /* Soft peach → lavender page wash, fixed so it stays put on scroll. */
+  background:
+    radial-gradient(1200px 600px at 8% -5%, #ffeede 0%, rgba(255,238,222,0) 55%),
+    radial-gradient(1100px 650px at 100% 0%, #efe9ff 0%, rgba(239,233,255,0) 55%),
+    var(--color-background);
+  background-attachment: fixed;
+  color: var(--color-foreground);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  letter-spacing: -0.02em;
+}
+
+/* Gradient text used for the emphasized word in headlines + the logo mark. */
+.text-gradient {
+  background: var(--accent-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+/* Dark pill primary button (matches mockup CTAs). */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--color-brand);
+  color: #fff;
+  border-radius: var(--radius-full);
+  padding: 0.85rem 1.6rem;
+  font-weight: 600;
+  font-family: var(--font-heading);
+  transition: background 0.15s ease, transform 0.15s ease;
+}
+.btn-primary:hover { background: var(--color-brand-hover); transform: translateY(-1px); }
+
+/* Soft white card. */
+.card {
+  background: #fff;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 1px 2px rgba(20,20,40,0.04), 0 12px 32px -12px rgba(20,20,40,0.10);
+}
