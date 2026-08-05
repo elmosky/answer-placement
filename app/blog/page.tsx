@@ -9,6 +9,7 @@ export const revalidate = 3600
 export const metadata: Metadata = {
   title: 'Blog',
   description: `Latest articles from ${siteConfig.name}.`,
+  alternates: { canonical: '/blog' },
 }
 
 export default async function BlogIndexPage() {

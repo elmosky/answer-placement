@@ -33,7 +33,6 @@ export const siteConfig: SiteConfig = {
     { label: 'How It Works', href: '/how-it-works' },
     { label: 'Sample Report', href: '/sample-report' },
     { label: 'Pricing', href: '/pricing' },
-    { label: 'Resources', href: '/resources' },
   ],
 
   // SEO defaults

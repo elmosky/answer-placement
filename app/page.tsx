@@ -6,6 +6,7 @@ export const metadata = {
   title: 'AnswerPlacement — Be found. Be cited. Be recommended.',
   description:
     'Search has evolved. AnswerPlacement audits your site across SEO, AEO, and GEO so you show up in search results, AI answers, and AI recommendations.',
+  alternates: { canonical: '/' },
 }
 
 const MAX = 'var(--container)'

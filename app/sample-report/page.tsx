@@ -6,6 +6,7 @@ import type { AuditReport } from '@/lib/audit/types'
 export const metadata = {
   title: 'Sample Report — AnswerPlacement',
   description: 'See exactly what an AnswerPlacement audit delivers: SEO, AEO, and GEO scores with a prioritized fix list.',
+  alternates: { canonical: '/sample-report' },
 }
 
 export default function SampleReportPage() {

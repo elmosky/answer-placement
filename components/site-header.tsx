@@ -43,13 +43,6 @@ export function SiteHeader() {
         </nav>
 
         <div className="flex items-center gap-4">
-          <Link
-            href="/login"
-            className="hidden sm:inline text-sm font-medium transition-opacity hover:opacity-60"
-            style={{ color: 'var(--color-foreground)' }}
-          >
-            Log in
-          </Link>
           <Link href="/#audit" className="btn-primary text-sm whitespace-nowrap" style={{ padding: '0.6rem 1.1rem' }}>
             Get My Audit
           </Link>

@@ -3,6 +3,7 @@ import Link from 'next/link'
 export const metadata = {
   title: 'How It Works — AnswerPlacement',
   description: 'How AnswerPlacement audits your site across SEO, AEO, and GEO — what we check, and why it matters.',
+  alternates: { canonical: '/how-it-works' },
 }
 
 const MAX = 'var(--container)'

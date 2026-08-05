@@ -3,6 +3,7 @@ import Link from 'next/link'
 export const metadata = {
   title: 'Pricing — AnswerPlacement',
   description: 'One-time SEO, AEO, and GEO visibility audit — scores plus a prioritized fix list, for $29.',
+  alternates: { canonical: '/pricing' },
 }
 
 const INCLUDED = [

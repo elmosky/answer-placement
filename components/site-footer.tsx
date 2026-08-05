@@ -26,7 +26,6 @@ export function SiteFooter() {
           </div>
           <div className="flex flex-col gap-3">
             <span className="font-semibold">Learn</span>
-            <Link href="/resources" style={{ color: 'var(--color-muted-foreground)' }}>Resources</Link>
             <Link href="/blog" style={{ color: 'var(--color-muted-foreground)' }}>Blog</Link>
           </div>
           <div className="flex flex-col gap-3">
