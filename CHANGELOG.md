@@ -18,6 +18,10 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Added
 - `/terms` and `/privacy` pages, written in plain language for the $29 audit product.
+  **These are interim by design** and get revised as the product expands; the specific
+  details that are placeholders rather than verified facts (contact address, refund
+  terms, missing legal entity and governing law, retention periods) and the triggers
+  for revisiting them are documented in `docs/LEGAL-PAGES.md`.
 - `app/robots.ts` (allows crawling, disallows `/api/` and `/audit/result`, points at
   the sitemap).
 - `app/sitemap.ts` covering the public pages and published blog posts. Customer
