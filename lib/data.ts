@@ -1,3 +1,4 @@
+import { unstable_rethrow } from 'next/navigation'
 import { createClient, isSupabaseConfigured } from '@/lib/supabase/server'
 import type { PostSummary, Post, BankRate } from '@/lib/types'
 
@@ -14,6 +15,9 @@ async function read<T>(label: string, run: (db: Db) => Promise<T>, fallback: T):
   try {
     return await run(await createClient())
   } catch (err) {
+    // cookies() throws a control-flow error to switch the route to dynamic
+    // rendering. That one has to reach Next, not get swallowed as a data error.
+    unstable_rethrow(err)
     console.error(`[data] ${label} failed:`, err)
     return fallback
   }

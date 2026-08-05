@@ -12,7 +12,9 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
   constructed with `undefined` and threw. The client now accepts either name.
 - Content reads in `lib/data.ts` no longer take a page down. If Supabase is
   unconfigured or a query fails, the page renders its empty state and the error is
-  logged instead of thrown.
+  logged instead of thrown. Next's own control-flow errors (the `cookies()` dynamic
+  bailout, `notFound()`) are rethrown via `unstable_rethrow` so the framework still
+  sees them.
 
 ### Added
 - `/terms` and `/privacy` pages, written in plain language for the $29 audit product.
