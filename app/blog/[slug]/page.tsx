@@ -12,11 +12,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params
   const post = await getPostBySlug(slug)
   if (!post) return {}
-  const images = post.og_image
-    ? [post.og_image]
-    : post.featured_image
-      ? [post.featured_image]
-      : []
+  const image = post.og_image || post.featured_image
+  // Leave `images` unset when there's no image, so the generated
+  // opengraph-image.tsx card is used. Setting it, even to [], overrides the file.
+  const images = image ? { images: [image] } : {}
   return {
     title: post.seo_title || post.title,
     description: post.meta_description || post.excerpt,
@@ -25,7 +24,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       type: 'article',
       title: post.seo_title || post.title,
       description: post.meta_description || post.excerpt,
-      images,
+      ...images,
       publishedTime: post.published_at ?? post.created_at,
       authors: [post.author],
       tags: post.tags,
@@ -34,7 +33,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       card: 'summary_large_image',
       title: post.seo_title || post.title,
       description: post.meta_description || post.excerpt,
-      images,
+      ...images,
     },
   }
 }

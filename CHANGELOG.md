@@ -5,6 +5,22 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+### Added (2026-10-01)
+- `app/not-found.tsx`: a branded 404 inside the site layout, linking home and the
+  main nav pages.
+- `app/error.tsx`: an error boundary with a retry button, so one failing page no
+  longer shows Next's bare "Application error" screen.
+- `app/opengraph-image.tsx`: a site-wide share card (tagline, domain, channel
+  gradient) rendered with Inter from `assets/og-fonts/inter-600.ttf`.
+- `app/blog/[slug]/opengraph-image.tsx`: a per-post share card with the post's
+  title. It's used only when the post has no `og_image` or `featured_image`; the
+  post page now leaves `openGraph.images` / `twitter.images` unset in that case,
+  since setting them (even to `[]`) overrides the generated card.
+- `app/apple-icon.tsx`: a 180px home-screen icon drawing the header's tri-dot mark.
+- `app/manifest.ts`: web app manifest at `/manifest.webmanifest`.
+- `app/feed.xml/route.ts`: RSS of the 50 newest published posts. A failed or
+  unconfigured posts query returns 503 instead of an empty feed.
+
 ### Fixed
 - `/blog` returned a 500 in production. `lib/supabase/server.ts` read
   `NEXT_PUBLIC_SUPABASE_URL` / `NEXT_PUBLIC_SUPABASE_ANON_KEY`, but this deployment
