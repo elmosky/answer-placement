@@ -5,6 +5,18 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+### Changed
+- **A rebuilt page comes out identical when nothing in it changed, so it costs no ISR
+  write.** Two causes, both fixed. `getPostBySlug` (`lib/data.ts`) is wrapped in React
+  `cache()`, so `generateMetadata` and the page share one database read instead of racing
+  two and writing the page in whichever order the answers arrive. And `next.config` sets
+  `htmlLimitedBots: /.*/`: Next streamed metadata for people but waited for it for
+  link-preview bots (Bing, Slack, Facebook), so the cached page flipped between two versions
+  depending on who triggered the rebuild. Measured on local production builds by forcing one
+  unchanged article to rebuild 20 times: polyphenolguide went from 15 of 20 rebuilds
+  changing to 1 of 20; soyfreesnacks, with people and bots taking turns, from 20 of 20 to 0
+  of 20. Vercel bills a write only when a rebuild's output changed.
+
 ### Fixed
 - `/blog` returned a 500 in production. `lib/supabase/server.ts` read
   `NEXT_PUBLIC_SUPABASE_URL` / `NEXT_PUBLIC_SUPABASE_ANON_KEY`, but this deployment
