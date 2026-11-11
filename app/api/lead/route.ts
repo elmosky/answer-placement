@@ -1,4 +1,4 @@
-import { supabaseAdmin } from '@/lib/supabase-admin'
+import { auditsTable } from '@/lib/db'
 
 export const dynamic = 'force-dynamic'
 
@@ -15,7 +15,7 @@ export async function POST(request: Request) {
     return Response.json({ error: 'A valid email and auditId are required' }, { status: 400 })
   }
 
-  const { error } = await supabaseAdmin().from('audits').update({ email }).eq('id', auditId)
+  const { error } = await (await auditsTable()).update({ email }).eq('id', auditId)
   if (error) return Response.json({ error: error.message }, { status: 500 })
   return Response.json({ ok: true })
 }

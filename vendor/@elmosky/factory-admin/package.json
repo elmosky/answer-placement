@@ -1,0 +1,50 @@
+{
+  "name": "@elmosky/factory-admin",
+  "version": "0.1.0",
+  "description": "The factory CMS as a package: config-driven /admin (posts, tiptap editor, SEO panel, subscribers, traffic, health) with magic-link auth. Sites edit config, never admin code.",
+  "license": "MIT",
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/client/index.d.ts",
+      "import": "./dist/client/index.js"
+    },
+    "./server": {
+      "types": "./dist/server/index.d.ts",
+      "import": "./dist/server/index.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "prepublishOnly": "npm run build"
+  },
+  "dependencies": {
+    "@elmosky/factory-db": "file:../factory-db",
+    "@tiptap/extension-image": "^2.6.0",
+    "@tiptap/extension-link": "^2.6.0",
+    "@tiptap/extension-placeholder": "^2.6.0",
+    "@tiptap/extension-table": "^2.6.0",
+    "@tiptap/extension-table-cell": "^2.6.0",
+    "@tiptap/extension-table-header": "^2.6.0",
+    "@tiptap/extension-table-row": "^2.6.0",
+    "@tiptap/extension-typography": "^2.6.0",
+    "@tiptap/react": "^2.6.0",
+    "@tiptap/starter-kit": "^2.6.0",
+    "nodemailer": "^7.0.0"
+  },
+  "peerDependencies": {
+    "@supabase/supabase-js": "^2",
+    "next": ">=15",
+    "react": ">=19",
+    "sharp": ">=0.33"
+  },
+  "private": true,
+  "peerDependenciesMeta": {
+    "sharp": {
+      "optional": true
+    }
+  }
+}

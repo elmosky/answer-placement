@@ -1,0 +1,26 @@
+{
+  "factory-db": {
+    "source": "e903c5370c42457a",
+    "vendored": "2eab3bb97b39b47f"
+  },
+  "factory-seo": {
+    "source": "abc9b2f3064021a9",
+    "vendored": "5dbccfb66bf999cb"
+  },
+  "factory-rules": {
+    "source": "19cd443a5617cd21",
+    "vendored": "abe350b89abc69a5"
+  },
+  "factory-affiliate": {
+    "source": "1404afe450daa8f9",
+    "vendored": "ce4c2e7953c006ad"
+  },
+  "factory-admin": {
+    "source": "343759aa41a1f568",
+    "vendored": "aa332a0787383210"
+  },
+  "factory-newsletter": {
+    "source": "809eb6e1290a1c38",
+    "vendored": "bf15bd71fbc90483"
+  }
+}

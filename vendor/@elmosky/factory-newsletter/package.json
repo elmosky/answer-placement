@@ -1,0 +1,27 @@
+{
+  "name": "@elmosky/factory-newsletter",
+  "version": "0.1.0",
+  "description": "Newsletter signup: records the subscriber in the factory DB first, then syncs to the sending platform (beehiiv). A provider outage never loses a lead.",
+  "license": "MIT",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist",
+    "bin"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "prepublishOnly": "npm run build"
+  },
+  "private": true,
+  "bin": {
+    "factory-newsletter-backfill": "./bin/factory-newsletter-backfill.mjs"
+  }
+}

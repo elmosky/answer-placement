@@ -1,5 +1,5 @@
 import { runAudit } from '@/lib/audit/engine'
-import { supabaseAdmin } from '@/lib/supabase-admin'
+import { auditsTable } from '@/lib/db'
 import { stripe } from '@/lib/stripe'
 
 // The engine crawls + grades (~60–90s), so this must not be a short-timeout
@@ -31,12 +31,9 @@ export async function POST(request: Request) {
     return Response.json({ error: 'Payment not completed' }, { status: 402 })
   }
 
-  const db = supabaseAdmin()
-
   // Idempotent: if this paid session already produced a report, return it
   // (so a refresh doesn't re-run the engine or look like a second charge).
-  const existing = await db
-    .from('audits')
+  const existing = await (await auditsTable())
     .select('id, report')
     .eq('stripe_session_id', sessionId)
     .maybeSingle()
@@ -50,8 +47,7 @@ export async function POST(request: Request) {
 
   try {
     const report = await runAudit(url)
-    const { data, error } = await db
-      .from('audits')
+    const { data, error } = await (await auditsTable())
       .insert({
         url: report.url,
         email,

@@ -1,5 +1,5 @@
 import { siteConfig } from '@/site.config'
-import { createClient, isSupabaseConfigured } from '@/lib/supabase/server'
+import { getAllPosts } from '@/lib/data'
 
 // RSS at /feed.xml. Feed readers and automation subscribe this way without an email address.
 export const revalidate = 3600
@@ -8,21 +8,12 @@ const esc = (s: string) =>
   s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;')
 
 export async function GET() {
-  // Queried here rather than via lib/data.ts, whose reads turn a failed query
-  // into an empty list. An empty feed looks like "no posts" to every reader
-  // subscribed to it, so a failure returns 503 instead.
-  if (!isSupabaseConfigured()) {
-    console.error('[feed.xml] Supabase env not configured')
-    return new Response('Feed unavailable', { status: 503 })
-  }
-  const supabase = await createClient()
-  const { data: posts, error } = await supabase
-    .from('posts')
-    .select('title, slug, excerpt, category, published_at, created_at')
-    .eq('status', 'published')
-    .order('created_at', { ascending: false })
-    .limit(50)
-  if (error) {
+  // getAllPosts throws on a database error. An empty feed looks like "no posts"
+  // to every reader subscribed to it, so a failure returns 503 instead.
+  let posts
+  try {
+    posts = (await getAllPosts()).slice(0, 50)
+  } catch (error) {
     console.error('[feed.xml] posts query failed:', error)
     return new Response('Feed unavailable', { status: 503 })
   }

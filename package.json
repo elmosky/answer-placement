@@ -4,24 +4,21 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "node scripts/check-vendor.mjs && next build",
     "start": "next start",
     "lint": "eslint"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.109.1",
-    "@supabase/ssr": "^0.10.3",
+    "@elmosky/factory-admin": "file:vendor/@elmosky/factory-admin",
+    "@elmosky/factory-db": "file:vendor/@elmosky/factory-db",
     "@supabase/supabase-js": "^2.106.1",
     "@tailwindcss/typography": "^0.5.19",
-    "@tiptap/extension-image": "^3.23.6",
-    "@tiptap/extension-link": "^3.23.6",
-    "@tiptap/extension-placeholder": "^3.23.6",
-    "@tiptap/react": "^3.23.6",
-    "@tiptap/starter-kit": "^3.23.6",
     "lucide-react": "^1.16.0",
     "next": "16.2.12",
     "react": "19.2.4",
     "react-dom": "19.2.4",
+    "server-only": "^0.0.1",
     "stripe": "^22.3.0"
   },
   "devDependencies": {

@@ -1,0 +1,30 @@
+{
+  "name": "@elmosky/factory-affiliate",
+  "version": "0.1.0",
+  "description": "Affiliate link insertion, monetization at publish time, and the coverage guard that catches articles published with no links.",
+  "license": "MIT",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "bin": {
+    "factory-affiliate-audit": "./bin/factory-affiliate-audit.mjs"
+  },
+  "files": [
+    "dist",
+    "bin"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "prepublishOnly": "npm run build"
+  },
+  "dependencies": {
+    "@elmosky/factory-db": "file:../factory-db"
+  },
+  "private": true
+}

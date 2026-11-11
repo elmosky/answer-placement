@@ -1,0 +1,26 @@
+{
+  "name": "@elmosky/factory-db",
+  "version": "0.1.0",
+  "description": "Tenant-safe Supabase client for the site factory: the scoping filter, site_id stamping, error-throwing, and pagination are baked in so they cannot be forgotten.",
+  "license": "MIT",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "prepublishOnly": "npm run build"
+  },
+  "peerDependencies": {
+    "@supabase/supabase-js": "^2"
+  },
+  "private": true
+}

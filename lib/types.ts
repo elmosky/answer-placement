@@ -97,7 +97,7 @@ export type Post = {
 
 export type PostSummary = Pick<
   Post,
-  'id' | 'title' | 'slug' | 'excerpt' | 'category' | 'featured_image' | 'created_at' | 'read_time' | 'status'
+  'id' | 'title' | 'slug' | 'excerpt' | 'category' | 'featured_image' | 'created_at' | 'published_at' | 'read_time' | 'status'
 >
 
 export type BankRate = {
