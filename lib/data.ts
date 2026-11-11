@@ -1,4 +1,5 @@
 import 'server-only'
+import { cache } from 'react'
 import { db } from '@/lib/db'
 import type { PostSummary, Post } from '@/lib/types'
 
@@ -28,7 +29,11 @@ export async function getAllPosts(): Promise<PostSummary[]> {
   return (data ?? []) as PostSummary[]
 }
 
-export async function getPostBySlug(slug: string): Promise<Post | null> {
+// One read per render, shared by generateMetadata and the page. Two separate reads race,
+// whichever answers first is written first, and the reshuffled page is billed as an ISR
+// write on every rebuild (15 of 20 rebuilds before, 1 of 20 after on polyphenolguide).
+export const getPostBySlug = cache(getPostBySlugUncached)
+async function getPostBySlugUncached(slug: string): Promise<Post | null> {
   const client = await db()
   const { data } = await live(client.from('posts').selectOwn('*').eq('slug', slug)).maybeSingle()
   // The factory posts table has author_id, not an author name; every post here
