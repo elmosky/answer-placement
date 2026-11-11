@@ -5,6 +5,31 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+### Changed (2026-11-11)
+- **Moved onto the shared Site Factory database** (`plvuwopoqzgyddadtsvn`). The site's own
+  Supabase project was paused on 2026-09-25, which left `/blog` showing "No posts yet" and
+  made a paid audit fail to save (500) with a dead share link. Blog posts now come from the
+  factory `posts` table (site `answerplacement`); paid audits save to
+  `answerplacement_audits` (`supabase/001_answerplacement_tenant.sql`).
+- Blog reads throw on a database error instead of returning an empty list, so an outage
+  shows as an error and Next keeps the last good page, rather than caching "No posts yet".
+  A post shows once it is published and its `published_at` has arrived.
+- `/admin` is now the factory admin (`@elmosky/factory-admin`): magic-link sign-in, Blog,
+  Data (Audits) and Traffic (GA4 property 544548489). `/admin` is disallowed in robots.txt.
+- Secrets: Doppler `answer-placement/dev` now references `affiliate-sites/prd` for the shared
+  factory values; Vercel production and preview carry the same set.
+
+### Added (2026-11-11)
+- `docs/briefs/2026-11-11-cited-first-doesnt-win.md`: the first blog post brief
+  ("Being cited first in ChatGPT doesn't win the answer"). Not written or published yet.
+- `vendor/@elmosky/*` (factory packages via `factory-launch sync`) and
+  `scripts/check-vendor.mjs`, which fails the build if the vendored copy is edited here.
+- `.env.example` and a real README.
+
+### Removed (2026-11-11)
+- `lib/supabase/*` and `lib/supabase-admin.ts` (replaced by `lib/db.ts`), the unused
+  template rates reads, and the unused `@supabase/ssr` and Tiptap v3 dependencies.
+
 ### Added (2026-10-01)
 - `app/not-found.tsx`: a branded 404 inside the site layout, linking home and the
   main nav pages.

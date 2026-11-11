@@ -1,5 +1,10 @@
 # Answer Placement — Build Blueprint
 
+> **Status (2026-11-11):** live, one-time $29 paid audit. Runs as a tenant of the shared
+> Site Factory database (`plvuwopoqzgyddadtsvn`): blog in factory `posts`, audits in
+> `answerplacement_audits`, `/admin` is factory-admin. §1 tiers, §4 data model and §6 pricing
+> below are the original plan and partly obsolete; README.md describes what is built.
+
 > Domain: **answerplacement.com**
 > Tagline: **Become the answer. Not just another result.**
 > Hero: **Be found. Be cited. Be recommended.**
@@ -89,6 +94,8 @@ The engine ships in three fidelities. Each is usable on its own and maps to a ti
 ---
 
 ## 4. Data model (Supabase)
+
+> Built (2026-11-11): only `answerplacement_audits` (id, url, email, seo/aeo/geo_score, report, stripe_session_id, created_at) in the factory DB. The tables below were the plan.
 
 ```
 audits            (free instant scans = leads)
